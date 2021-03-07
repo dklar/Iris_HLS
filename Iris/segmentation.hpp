@@ -644,8 +644,8 @@ void searchY(uint8_t* src, int rMin,int rMax, uint16_t *vote) {
 	lin.begin = 0;
 
 	searchForY:
-	for (int x = 0; x < w; x++) {
-		for (int y = 0; y < h; y++) {
+	for (int x = 10; x < w-10; x++) {
+		for (int y = 10; y < h-10; y++) {
 		#pragma HLS PIPELINE II=1
 		#pragma HLS LOOP_FLATTEN off
 			if (src[x + y * w] == 255) {
@@ -669,8 +669,8 @@ void searchX(uint8_t* src, int rMin,int rMax, uint16_t *vote) {
 	line lin;
 	lin.begin = 0;
 	searchForX:
-	for (int y = 0; y < h; y++) {
-		for (int x = 0; x < w; x++){
+	for (int y = 10; y < h-10; y++) {
+		for (int x = 10; x < w-10; x++){
 		#pragma HLS PIPELINE II=1
 		#pragma HLS LOOP_FLATTEN off
 			if (src[x + y * w] == 255) {
