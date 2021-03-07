@@ -3,6 +3,10 @@
 .settings
 .vscode
 Debug
-solution1
+Iris/solution1/*
+Gabor/solution1/*
+!Iris/solution1/script.tcl
+!Gabor/solution1/directives.tcl
 *.xml
 *.app
+*.log
