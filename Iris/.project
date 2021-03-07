@@ -29,67 +29,72 @@
 		<link>
 			<name>source</name>
 			<type>2</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/.apc/.src</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/.apc/.src</location>
 		</link>
 		<link>
 			<name>testbench</name>
 			<type>2</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/.apc/.tb</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/.apc/.tb</location>
 		</link>
 		<link>
 			<name>solution1/constraints</name>
 			<type>2</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/solution1/.tcls</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/solution1/.tcls</location>
 		</link>
 		<link>
 			<name>source/cordic.hpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/cordic.hpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/cordic.hpp</location>
 		</link>
 		<link>
 			<name>source/normalisation.hpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/normalisation.hpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/normalisation.hpp</location>
 		</link>
 		<link>
 			<name>source/segmentation.hpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/segmentation.hpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/segmentation.hpp</location>
 		</link>
 		<link>
 			<name>source/top_level.cpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/top_level.cpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/top_level.cpp</location>
 		</link>
 		<link>
 			<name>source/top_level.hpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/top_level.hpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/top_level.hpp</location>
 		</link>
 		<link>
 			<name>source/types.hpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/types.hpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/types.hpp</location>
+		</link>
+		<link>
+			<name>testbench/draw.py</name>
+			<type>1</type>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/draw.py</location>
 		</link>
 		<link>
 			<name>testbench/test_bench.cpp</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/test_bench.cpp</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/test_bench.cpp</location>
 		</link>
 		<link>
 			<name>solution1/constraints/.xml.directive</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/solution1/solution1.directive</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/solution1/solution1.directive</location>
 		</link>
 		<link>
 			<name>solution1/constraints/directives.tcl</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/solution1/directives.tcl</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/solution1/directives.tcl</location>
 		</link>
 		<link>
 			<name>solution1/constraints/script.tcl</name>
 			<type>1</type>
-			<location>C:/Users/Dennis/VivadoHLS/Last_Try/Iris/solution1/script.tcl</location>
+			<location>C:/Users/Dennis/Desktop/Iris_HLS/Iris/solution1/script.tcl</location>
 		</link>
 	</linkedResources>
 </projectDescription>

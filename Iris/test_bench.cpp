@@ -1,7 +1,10 @@
 #include "top_level.hpp"
 #include <hls_opencv.h>
+#include <windows.h>
+#include <fstream>
 
 using namespace cv;
+using namespace std;
 
 void test_canny(){
 	Mat dst = imread("C://Users//Dennis//VivadoHLS//Final//Database//IITD Database//001//01_L.bmp", IMREAD_GRAYSCALE);
@@ -61,9 +64,9 @@ void testCordic() {
 		s2 = s.to_float();
 		c2 = c.to_float();
 
-		std::cout << "(1) Math.h sinus(" << i << ") = " << s1 << "\n";
-		std::cout << "(2) CORDIC. sinus(" << i << ") = " << s2 << "\n";
-		std::cout << "\tDiff. sinus: " << abs(((s1 - s2) / s1) * 100) << "%\n";
+		std::cout << "(1) Math.h sine(" << i << ") = " << s1 << "\n";
+		std::cout << "(2) CORDIC sine(" << i << ") = " << s2 << "\n";
+		std::cout << "\tDiff. sine: " << abs(((s1 - s2) / s1) * 100) << "%\n";
 
 		std::cout << "(1) Math.h cosine(" << i << ") = " << c1 << "\n";
 		std::cout << "(2) Estim. cosine(" << i << ") = " << c2 << "\n";
@@ -86,28 +89,76 @@ void testNormalisation(){
 	imwrite("float.jpg",out2);
 }
 
+std::string databasePath = "C://Users//Dennis//VivadoHLS//Final//Database//IITD Database//";
+
+void testDetection(const char* filename,int i){
+	IplImage* src_image = new IplImage;
+	IplImage* dst_image = new IplImage;
+
+	AXI_STREAM src_stream,dst_stream;
+	int x,y,ri,rp;
+
+	src_image = cvLoadImage(filename);
+	dst_image = cvCreateImage(cvSize(NORM_WIDTH,NORM_HEIGHT), src_image->depth,1);// src_image->nChannels);
+
+	IplImage2AXIvideo(src_image, src_stream);
+	top_level_segmentation(src_stream,x,y,rp,ri);
+
+	fstream f;
+	f.open("results.txt", ios::app);
+	f << filename << ";" << std::to_string(x) << ";" << std::to_string(y) << ";"
+			<< std::to_string(rp) << ";" << std::to_string(ri) << "\n";
+
+}
+
+void testDetectionTop(int N) {
+	remove("results.txt");
+	int j = 0;
+	for (int i = 1; i <= N; i++) {
+
+		std::string path =
+				i < 10 ? databasePath + "00" + std::to_string(i) + "//*" :
+				i < 100 ?
+						databasePath + "0" + std::to_string(i) + "//*" :
+						databasePath + std::to_string(i) + "//*";
+
+		WIN32_FIND_DATA FindFileData;
+		HANDLE hFind = FindFirstFile(path.c_str(), &FindFileData);
+		if (hFind == INVALID_HANDLE_VALUE) {
+			printf("FindFirstFile failed (%d)\n", GetLastError());
+			return;
+		}
+		path = path.substr(0, path.size() - 1);
+
+		do {
+			if (!(FindFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
+				std::string pathTemp = path + FindFileData.cFileName;
+				int r, x, y;
+				testDetection(pathTemp.c_str(), j);
+				j++;
+			}
+		} while (FindNextFile(hFind, &FindFileData) != 0);
+
+		FindClose(hFind);
+	}
+}
 
 void hls_test1(){
 	IplImage* src_image = new IplImage;
-
 	AXI_STREAM src_stream;
-
 	src_image = cvLoadImage("C://Users//Dennis//VivadoHLS//Final//Database//IITD Database//001//01_L.bmp");
-
 	uint8_t norm_image[NORM_WIDTH*NORM_HEIGHT];
-
 	IplImage2AXIvideo(src_image, src_stream);
 	top_level_normalisation(src_stream,norm_image);
-
 	Mat out = Mat(NORM_HEIGHT,NORM_WIDTH,CV_8UC1 ,norm_image);
 	imwrite("norm.jpg",out);
-
 	cvReleaseImage(&src_image);
 }
 
 int main(){
 	//test_canny();
 	//test_Hough();
-	testNormalisation();
+	//testNormalisation();
+	testDetectionTop(10);
 	return 0;
 }

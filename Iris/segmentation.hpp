@@ -66,7 +66,6 @@ struct coord{
 
 };
 
-
 template<int w>
 void initList(uint16_t *in, uint16_t val) {
 	initLoop:
@@ -948,7 +947,9 @@ int linear_CircleSum_pupil(uint8_t *buffer,int x, int r){
     return addSum >> 1;
 
 }
-
+/**
+ * Streaming possible
+ **/
 template<uint8_t start_search, uint8_t end_search, int width, int height>
 int getBorder_Pupil(uint8_t* image_in, uint8_t* image_out, int x, int y) {
 	uint8_t line_buffer[5 * width];
