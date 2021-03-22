@@ -12,3 +12,5 @@ Gabor/solution1/*
 *.xml
 *.app
 *.log
+*.cproject
+*.project

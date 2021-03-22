@@ -12,19 +12,24 @@
 #define MAX_WIDTH_IITD 320
 #define MAX_HEIGHT_IITD 240
 
-#define NORM_WIDTH 180
-#define NORM_HEIGHT 16
-
 #define MAX_WIDTH MAX_WIDTH_IITD
 #define MAX_HEIGHT MAX_HEIGHT_IITD
 
-#define NORM_HEIGHT 16
-#define NORM_WIDTH  180
+#define NORM_WIDTH_IITD 432
+#define NORM_HEIGHT_IITD 48
+
+#define NORM_WIDTH_CUST 180
+#define NORM_HEIGHT_CUST 16
+
+#define NORM_HEIGHT NORM_HEIGHT_IITD
+#define NORM_WIDTH  NORM_WIDTH_IITD
 
 #define MAX_KERN_SIZE NORM_HEIGHT/3
 
 #define ENCODED_PIXELS  1024
 #define BITCODE_LENGTH  2048     //each encoded pixel brings 2 bits to the bitcode
+
+#define MAX_BITWIDTH 16
 
 namespace types {
 	typedef hls::stream<ap_axiu<32, 1, 1, 1> > AXI_STREAM; //32 bit data stream
@@ -35,6 +40,11 @@ namespace types {
 	typedef hls::Scalar<1, uint8_t> PIXELGRAY;
 	typedef hls::Scalar<3, uint8_t> RGBPIXEL;
 	static const float DegToRad = 0.01745329;
+	typedef ap_fixed<16,5> floatGauss;
+	typedef ap_fixed<16,5> floatGabor;//orginal 18,5
+	typedef ap_ufixed<MAX_BITWIDTH,0> floatTan;
+	typedef ap_fixed<MAX_BITWIDTH,2> floatSin;
+	typedef ap_fixed<MAX_BITWIDTH,4> floatArg;
 }
 
 #endif
